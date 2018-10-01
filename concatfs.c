@@ -478,14 +478,14 @@ static int concatfs_symlink(const char *path, const char * link)
 	return rv;
 }
 
-static int concatfs_rename(const char *path, const char *topath)
+static int concatfs_rename(const char *dest, const char *finalDes)
 {
 	int rv;
 	char fpath[PATH_MAX];
 	char ftopath[PATH_MAX];
-
-	snprintf(fpath, sizeof(fpath), "%s/%s", src_dir, path);
-	snprintf(ftopath, sizeof(ftopath), "%s/%s", src_dir, topath);
+	
+	snprintf(ftopath, sizeof(ftopath), "%s/%s", src_dir, finalDes);
+	snprintf(fpath, sizeof(fpath), "%s/%s", src_dir, dest);
 	
 	rv = rename(fpath, ftopath);
 	if (rv < 0) {
