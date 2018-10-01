@@ -52,14 +52,14 @@ struct file_storage storage_info;
 map<int,struct file_storage> storage_table;
 
 
-void write_file_content(char const *disk_name, char const* content, int loc) {
-	FILE *fp = fopen(disk_name, "a+");
+void write_file_content(char const *disk_name_check, char const* content_test, int loc) {
+	FILE *fp = fopen(disk_name_check, "a+");
 	fseek(fp, loc, SEEK_SET);
-	cout << "content size " << strlen(content) << endl;
-	char sb_buff[strlen(content)];
-	memset(sb_buff,0,strlen(content));
-	memcpy(sb_buff,content,strlen(content));
-	fwrite(sb_buff,1,strlen(content),fp);
+	cout << "content size " << strlen(content_test) << endl;
+	char sb_buff[strlen(content_test)];
+	memset(sb_buff,0,strlen(content_test));
+	memcpy(sb_buff,content,strlen(content_test));
+	fwrite(sb_buff,1,strlen(content_test),fp);
 	fclose(fp);
 }
 
